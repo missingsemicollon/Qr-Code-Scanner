@@ -126,15 +126,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
-    protected void onPause() {
-        super.onPause();
-        cameraSource.release();
+    protected void onStart() {
+        super.onStart();
+        initialiseDetectorsAndSources();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        initialiseDetectorsAndSources();
+    protected void onStop() {
+        super.onStop();
+        cameraSource.release();
     }
+
 }
